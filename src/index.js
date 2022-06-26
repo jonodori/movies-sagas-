@@ -54,6 +54,7 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+// Used to store the object from generator fetchDetails 
 const details = (state = [], action) => {
     switch(action.type) {
         case 'SET_DETAILS':
@@ -74,20 +75,19 @@ const movies = (state = [], action) => {
 }
 
 // Used to store the movie genres
-const genres = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GENRES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
+// const genres = (state = [], action) => {
+//     switch (action.type) {
+//         case 'SET_GENRES':
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         movies,
-        genres,
         details
     }),
     // Add sagaMiddleware to our store
