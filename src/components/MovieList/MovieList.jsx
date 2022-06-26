@@ -30,7 +30,7 @@ const details = (movieId) => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <Link 
+                            <Link
                             onClick={ () => {
                                 details(movie.id)  
                             }}
