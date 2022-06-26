@@ -19,11 +19,22 @@ function* rootSaga() {
 }
 
 function* fetchDetails(action){
+        
 
-        // try {
-        //     const response = yield axios.get('/api/genre/' + action.payload);
-
-        // }
+        try {
+            const response = yield axios.get('/api/genre/' + action.payload);
+            
+            console.log('in fetchDetails', response.data)
+            yield put({
+                type: 'SET_DETAILS',
+                payload: response.data
+            })
+        } catch (err){
+            alert('Err on fetchDetails');
+            console.error(err);
+            return;
+        }
+       
 }
 
 function* fetchAllMovies() {
@@ -42,6 +53,15 @@ function* fetchAllMovies() {
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
+
+const details = (state = [], action) => {
+    switch(action.type) {
+        case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
