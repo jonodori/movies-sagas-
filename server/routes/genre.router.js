@@ -40,7 +40,7 @@ router.get('/:id', (req, res) => {
     .catch(err => {
       console.log('ERROR: Get all details', err);
       res.sendStatus(500)
-    })
+    })    
 });
 
 module.exports = router;
