@@ -8,10 +8,12 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 function MovieList() {
 
     const dispatch = useDispatch();
+
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
+       //empty array used for state  
     }, []);
 
 const details = (movieId) => {

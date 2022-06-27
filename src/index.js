@@ -22,8 +22,8 @@ function* fetchDetails(action){
         
 
         try {
-            const response = yield axios.get('/api/genre/' + action.payload);
-            
+            const response = yield axios.get(`/api/genre/${action.payload}`);
+                            //waits for axio request to finish
             console.log('in fetchDetails', response.data)
             yield put({
                 type: 'SET_DETAILS',
@@ -42,6 +42,7 @@ function* fetchAllMovies() {
     try {
         const movies = yield axios.get('/api/movie');
         console.log('get all:', movies.data);
+        //read dispatch
         yield put({ type: 'SET_MOVIES', payload: movies.data });
 
     } catch {
@@ -69,6 +70,7 @@ const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
             return action.payload;
+            // returns to the store 
         default:
             return state;
     }

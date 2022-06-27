@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 function MovieDetails(){
     const history = useHistory();
 
+    //grabs the data from the store
     const movieDetails = useSelector(store => store.details)
     
     const backToList = () => {
@@ -13,7 +14,8 @@ function MovieDetails(){
     return (
         <>
         <h1> Details </h1>
-        <h3>
+        <h3>     
+        {/* default state is undefined, need to do conditional rendering     */}
         {movieDetails[0] && movieDetails[0].title}
         <p>
         <img src = {movieDetails[0] && movieDetails[0].poster} />

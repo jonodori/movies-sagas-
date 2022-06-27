@@ -28,12 +28,12 @@ router.get('/:id', (req, res) => {
   ;
   `;
 
-  const queryparams = [
+  const queryParams = [
     id
   ]
   
 
-  pool.query(query, queryparams)
+  pool.query(query, queryParams)
     .then( result => {
       res.send(result.rows);
     })
